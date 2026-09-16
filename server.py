@@ -373,6 +373,7 @@ def run():
     except KeyboardInterrupt:
         print("")
         print("サーバーを停止しました")
+        print("----------------------------")
 
         server.server_close()
     
