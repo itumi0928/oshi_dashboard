@@ -341,15 +341,9 @@ class MyHandler(BaseHTTPRequestHandler):
             with open(filepath, 'rb') as f:
                 content = f.read()
 
-            if path.endswith(".css"):
-                content_type = "text/css; charset=utf-8"
-
-            else:
-                content_type = "application/octet-stream"
-
             self.send_response(200)
 
-            self.send_header('Content-type', content_type)
+            self.send_header('Content-type', 'text/css; charset=utf-8')
 
             self.end_headers()
 
@@ -368,17 +362,19 @@ class MyHandler(BaseHTTPRequestHandler):
         self.wfile.write('<h1>404 Not Found</h1>'.encode('utf-8'))
 
 def run():
-    server_address = ('', 8000)
-    httpd = HTTPServer(server_address, MyHandler)
-    print('サーバーを起動しました: http://localhost:8000')
+    server = HTTPServer(("", 8000), MyHandler)
+    print("----------------------------")
+    print("サーバーを起動しました: http://localhost:8000")
+    print("待機中... (終了するには Ctrl+C を押してください)")
 
     try:
-        httpd.serve_forever()
+        server.serve_forever()
 
     except KeyboardInterrupt:
+        print("")
         print("サーバーを停止しました")
 
-        httpd.server_close()
+        server.server_close()
     
 if __name__ == '__main__':
     run()

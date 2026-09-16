@@ -1,12 +1,37 @@
-<form method="POST" action="/add">
-    <label>タイトル</label>
-    <input type="text" name="title">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お気に入り追加</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
 
-    <label>ジャンル</label>
-    <input type="text" name="genre">
+    <header>
+        <h1>お気に入り追加</h1>
+    </header>
 
-    <button type="submit">追加する</button>
+    <div class="container">
 
-    <p>{{ error }}</p>
+        <form method="POST" action="/add">
+            <label>タイトル</label>
+            <input type="text" name="title">
 
-</form>
+            <label>ジャンル</label>
+            <input type="text" name="genre">
+
+            <button type="submit">追加する</button>
+
+            <p>{{ error }}</p>
+
+        </form>
+
+        <div class="buttons">
+            <a href="/" class="btn">トップに戻る</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
